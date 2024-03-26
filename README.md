@@ -1,0 +1,1 @@
+Word Legend as a static website.
