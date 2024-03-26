@@ -29,6 +29,16 @@ $(".gameOverPlayAgain").on("click", () => {
     location.reload();
 });
 
+$(".themeButton").on("click", () => {
+    let body = $("body");
+    if (body.hasClass("dark")){
+        body.removeClass("dark");
+    }
+    else{
+        body.addClass("dark");
+    }
+});
+
 function EnterLetter(key){
     position = NextLetter(position);
     EditLetter(position, key);

@@ -1,11 +1,37 @@
 body {
+    --background-colour: white;
+    --accent-colour: rgb(211, 214, 218);
+    --text-color: black;
+    --key-colour: var(--accent-colour);
+
+    --pending-colour: rgb(135, 138, 140);
+    --pending-text-colour: black;
+    --missing-colour: rgb(120, 124, 126);
+    --yellow-colour: rgb(201, 180, 88);
+    --found-colour: rgb(106, 170, 100);
+}
+
+.dark {
+    --background-colour: rgb(18, 18, 19);
+    --accent-colour: rgb(58, 58, 60);
+    --text-color: white;
+    --key-colour: rgb(129, 131, 132);
+
+    --pending-colour: rgb(86,87,88);
+    --pending-text-colour: white;
+    --missing-colour: var(--accent-colour);
+    --yellow-colour: rgb(181, 159, 59);
+    --found-colour: rgb(83,141,78);
+}
+
+body {
     text-align: center;
     display: flex;
     align-items: center;
     flex-direction: column;
     font-family: sans-serif;
-    background-color: rgb(18, 18, 19);
-    color: white;
+    background-color: var(--background-colour);
+    color: var(--text-color);
     margin: auto;
 }
 
@@ -33,28 +59,26 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
-    border-bottom: 1px solid rgb(58, 58, 60);
+    border-bottom: 1px solid var(--accent-colour);
     margin-bottom: 20px;
 }
 
-.navleft {
-    width: 0px;
+.navleft, .navright {
+    width: 100px;
 }
+
+
 
 h1 {
     flex-grow: 1;
     margin: 10px;
     font-size: 33px;
-    font-family:Arial, Helvetica, sans-serif
+    font-family:Arial, Helvetica, sans-serif;
 } 
 
 h1 > a {
     text-decoration: none;
-    color: white;
-}
-
-.navright {
-    width: 0px;
+    color: var(--text-color);
 }
 
 .letter {
@@ -65,14 +89,15 @@ h1 > a {
     margin: 3px;
     height: 60px;
     width: 60px;
-    border: solid 2px rgb(58, 58, 60);
+    border: solid 2px var(--accent-colour);
     text-transform: uppercase;
 }
 
 
 
 .pending {
-    border: solid 2px rgb(86,87,88);
+    border: solid 2px var(--pending-colour);
+    color: var(--pending-text-colour);
 }
 
 .keyboard {
@@ -95,7 +120,7 @@ h1 > a {
     font-size: 20px;
     font-weight: 700;
     margin: 3px;
-    background-color: rgb(129,131,132);
+    background-color: var(--key-colour);
     border-radius: 3px;
     cursor: pointer;
 }
@@ -111,17 +136,21 @@ h1 > a {
 
 
 .missing {
-    background-color: rgb(58, 58, 60);
+    background-color: var(--missing-colour);
+    border-color: var(--missing-colour);
+    color: white;
 }
 
 .yellow {
-    background-color: rgb(181,159,59);
-    border-color: rgb(181,159,59);
+    background-color: var(--yellow-colour);
+    border-color: var(--yellow-colour);
+    color: white;
 }
 
 .found {
-    background-color: rgb(83,141,78);
-    border-color: rgb(83,141,78);
+    background-color: var(--found-colour);
+    border-color: var(--found-colour);
+    color: white;
 }
 
 .gameOverWindowHolder{
@@ -136,8 +165,8 @@ h1 > a {
 
 
 .gameOverWindow {
-    background-color: rgb(18, 18, 19);
-    border: 5px solid white;
+    background-color: var(--background-colour);
+    border: 5px solid var(--text-color);
     width: 300px;
     height: 500px;
     display: flex;
@@ -160,12 +189,16 @@ h1 > a {
     cursor: pointer;
 }
 
+.gameOverClose path {
+    fill: var(--text-color);
+}
+
 .hidden {
     visibility: hidden;
 }
 
 .gameOverCopy, .gameOverPlayAgain {
-    border: solid 2px white;
+    border: solid 2px var(--text-color);
     border-radius: 5px;
     height: 35px;
     line-height: 0px;
