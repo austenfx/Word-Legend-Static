@@ -31,11 +31,22 @@ $(".gameOverPlayAgain").on("click", () => {
 
 $(".themeButton").on("click", () => {
     let body = $("body");
+    let sun = $(".sunIcon");
+    let moon = $(".moonIcon");
     if (body.hasClass("dark")){
-        body.removeClass("dark");
+        sun.slideToggle().promise().done( function() {
+            body.removeClass("dark");
+            moon.slideToggle();
+        });
+        
+        
+        
     }
     else{
-        body.addClass("dark");
+        moon.slideToggle().promise().done( function() {
+            body.addClass("dark");
+            sun.slideToggle();
+        });
     }
 });
 

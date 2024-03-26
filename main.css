@@ -64,14 +64,37 @@ body {
 }
 
 .navleft, .navright {
-    width: 100px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navleft {
+    margin-left: 10px;
+}
+
+.navright {
+    margin-right: 10px;
 }
 
 
+.moonIcon path, .sunIcon path {
+    stroke: var(--text-color);
+}
+
+.sunIcon, .moonIcon {
+    width: 40px;
+}
+
+.sunIcon {
+    display: none;
+}
 
 h1 {
     flex-grow: 1;
     margin: 10px;
+    margin-right: 0px;
     font-size: 33px;
     font-family:Arial, Helvetica, sans-serif;
 } 
@@ -82,13 +105,13 @@ h1 > a {
 }
 
 .letter {
-    line-height: 60px;
+    line-height: 50px;
     font-size: 32px;
     font-weight: 750;
     background-color: transparent;
     margin: 3px;
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border: solid 2px var(--accent-colour);
     text-transform: uppercase;
 }
@@ -104,6 +127,15 @@ h1 > a {
     max-width: 491px;
     margin: 20px auto;
     width: 100%;
+}
+
+@media (max-width: 415px) {
+.keyboard {
+    margin: 5px auto;
+}
+.navbar {
+    margin-bottom: 5px;
+}
 }
 
 .keyboard > div {
@@ -195,6 +227,8 @@ h1 > a {
 
 .hidden {
     visibility: hidden;
+    width: 0px;
+    height: 0px;
 }
 
 .gameOverCopy, .gameOverPlayAgain {
