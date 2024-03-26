@@ -171,7 +171,7 @@ function WinGame() {
     let summary = CreateSummary();
     $(".gameOverMessage").text("Well done Legend!");
     $(".statSummary").html(summary);
-    $(".score").text(position.word + "/6");
+    $(".score").html(position.word + "/6<br/>" + targetWord);
     setTimeout(() => {
         $(".gameOverWindowHolder").removeClass("hidden");
     }, 3000);
