@@ -23,6 +23,9 @@ $(".gameOverClose").on("click", () => {
 $(".gameOverCopy").on("click", () => {
     navigator.clipboard.writeText($(".statSummary").text());
     $(".gameOverCopy > h3").text("Copied to clipboard!");
+    setTimeout(() => {
+        $(".gameOverCopy > h3").text("Share");
+    }, 2000);
 });
 
 $(".gameOverPlayAgain").on("click", () => {
@@ -181,13 +184,24 @@ function WinGame() {
 function CreateSummary() {
     let states = wordStates;
 
-    numToEmoji = {
-        0: "⬛",
+    numToEmojiLight = {
+        0: "⬜",
         1: "🟨",
         2: "🟩"
     }
 
+    numToEmojiDark = {
+        0: "⬛",
+        1: "🟨",
+        2: "🟩"
+    }
+    
     let summary = "";
+
+    let numToEmoji = numToEmojiLight;
+    if ($("body").hasClass("dark")) {
+        numToEmoji = numToEmojiDark;
+    }
 
     for (let word = 0; word < states.length; word++) {
         for (let letter = 0; letter < maxLetters; letter++) {
