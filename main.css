@@ -160,11 +160,17 @@ h1 > a {
     cursor: pointer;
 }
 
-.gameOverCopy {
-    background-color: #818384;
-    
-}
-
 .hidden {
     visibility: hidden;
+}
+
+.gameOverCopy, .gameOverPlayAgain {
+    border: solid 2px white;
+    border-radius: 5px;
+    height: 35px;
+    line-height: 0px;
+    padding-left: 7px;
+    padding-right: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }

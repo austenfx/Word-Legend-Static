@@ -20,7 +20,14 @@ $(".gameOverClose").on("click", () => {
     $(".gameOverWindowHolder").addClass("hidden");
 });
 
-$(".gameOverCopy")
+$(".gameOverCopy").on("click", () => {
+    navigator.clipboard.writeText($(".statSummary").text());
+    $(".gameOverCopy > h3").text("Copied to clipboard!");
+});
+
+$(".gameOverPlayAgain").on("click", () => {
+    location.reload();
+});
 
 function EnterLetter(key){
     position = NextLetter(position);
@@ -165,7 +172,7 @@ function CreateSummary() {
         for (let letter = 0; letter < maxLetters; letter++) {
             summary += numToEmoji[states[word][letter]];
         }
-        summary += "<br/>";
+        summary += "\n<br/>";
     }
     console.log(summary);
     //navigator.clipboard.writeText(summary);
@@ -224,7 +231,6 @@ function SetLetterStates(wordNum, states) {
                 function() {
                     letterElement.addClass(numToState[states[i]]);
                     letterElement.fadeIn();
-                    console.log("yerp");
                 }
             );
         }, i * 300);
