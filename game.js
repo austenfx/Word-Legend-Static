@@ -193,10 +193,11 @@ function LoseGame() {
     $(".gameOverMessage").text("Not this time!");
     let summary = CreateSummary();
     $(".statSummary").html(summary);
-    $(".score").text("X/6");
+    $(".score").html("X/6<br/>" + targetWord);
     setTimeout(() => {
         $(".gameOverWindowHolder").removeClass("hidden");
     }, 3000);
+    AlertMessage(targetWord)
 }
 
 function WinGame() {
