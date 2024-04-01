@@ -6,6 +6,8 @@ let wordStates = [];
 let themeSwitching = false;
 const listofValidAnswers = CreateValidAnswerList();
 
+let messageBoxTimer;
+
 numToState = {
     0: "missing",
     1: "yellow",
@@ -130,7 +132,12 @@ function BackSpace(){
 
 function Enter() {
     let guess = GetWord(position.word).toUpperCase();
-    if (guess.length == maxLetters && listofValidAnswers.includes(guess.toLowerCase())){
+    let ifValidWord = listofValidAnswers.includes(guess.toLowerCase());
+    if (guess.length !== maxLetters) {
+        WordTooShort();
+    } else if (!ifValidWord) {
+        WordNotValid();
+    } else {
         let letterStates = GetLetterStates(guess, targetWord);
         SetLetterStates(position.word, letterStates);
         setTimeout(() => {
@@ -147,6 +154,27 @@ function Enter() {
         
     }
 
+}
+
+function WordTooShort(){
+    AlertMessage("Not enough letters");
+}
+
+function WordNotValid(){
+    AlertMessage("Not in word list")
+}
+
+function AlertMessage(messageToSend){
+    if (messageBoxTimer != null) {
+        clearTimeout(messageBoxTimer);
+    }
+    let box = $(".messageBox");
+    let message = $(".messageBox p");
+    message.text(messageToSend);
+    box.css("display", "block");
+    messageBoxTimer = setTimeout(() => {
+        box.fadeOut();
+    }, 800);
 }
 
 function GetWord(wordNum){
