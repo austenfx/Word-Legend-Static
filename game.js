@@ -3,6 +3,7 @@ let maxLetters = 5;
 let targetWord = "";
 let gameOver = false;
 let wordStates = [];
+let themeSwitching = false;
 const listofValidAnswers = CreateValidAnswerList();
 
 numToState = {
@@ -33,23 +34,25 @@ $(".gameOverPlayAgain").on("click", () => {
 });
 
 $(".themeButton").on("click", () => {
-    let body = $("body");
-    let sun = $(".sunIcon");
-    let moon = $(".moonIcon");
-    if (body.hasClass("dark")){
-        sun.slideToggle().promise().done( function() {
-            body.removeClass("dark");
-            moon.slideToggle();
-        });
-        
-        
-        
-    }
-    else{
-        moon.slideToggle().promise().done( function() {
-            body.addClass("dark");
-            sun.slideToggle();
-        });
+    if (!themeSwitching) {
+        themeSwitching = true;
+        let body = $("body");
+        let sun = $(".sunIcon");
+        let moon = $(".moonIcon");
+        if (body.hasClass("dark")){
+            sun.slideToggle().promise().done( function() {
+                body.removeClass("dark");
+                moon.slideToggle();
+                themeSwitching = false;
+            });
+        }
+        else{
+            moon.slideToggle().promise().done( function() {
+                body.addClass("dark");
+                sun.slideToggle();
+                themeSwitching = false;
+            });
+        }
     }
 });
 
